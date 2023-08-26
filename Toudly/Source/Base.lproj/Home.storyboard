@@ -314,6 +314,24 @@
                                     <constraint firstItem="upr-zy-pCd" firstAttribute="width" secondItem="upr-zy-pCd" secondAttribute="height" id="vEv-MQ-fJz"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dx-da-ReM">
+                                <rect key="frame" x="39" y="244" width="76" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="nanum"/>
+                                <connections>
+                                    <action selector="changeToNanumFont:" destination="659-Oz-N0A" eventType="touchUpInside" id="SMj-3r-tKb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1Y-CM-24K">
+                                <rect key="frame" x="139" y="244" width="92" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="manrope"/>
+                                <connections>
+                                    <action selector="changeToManropeFont:" destination="659-Oz-N0A" eventType="touchUpInside" id="agc-Vz-gtL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kmq-BR-Yt9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -632,14 +650,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search TodoList!" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hVH-Ch-nST">
-                                <rect key="frame" x="59" y="65.5" width="296" height="34"/>
+                                <rect key="frame" x="60" y="66" width="294" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsR-qn-X1l">
-                                <rect key="frame" x="20" y="68" width="29" height="29"/>
+                                <rect key="frame" x="20" y="68" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="vsR-qn-X1l" secondAttribute="height" id="7wU-Gb-Zn3"/>
+                                    <constraint firstAttribute="height" constant="30" id="ths-Lj-RhF"/>
+                                    <constraint firstAttribute="width" constant="30" id="udp-ax-b8x"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button" image="left"/>
@@ -648,7 +667,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JPl-kB-78r">
-                                <rect key="frame" x="20" y="119.5" width="374" height="722.5"/>
+                                <rect key="frame" x="20" y="150" width="374" height="692"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -689,20 +708,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmT-v7-HQs">
+                                <rect key="frame" x="364" y="68" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5PJ-GL-AnY"/>
+                                    <constraint firstAttribute="width" constant="30" id="VeU-gO-5pC"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="more"/>
+                                <connections>
+                                    <action selector="moreOptionBtnTapped:" destination="WV3-Fy-D7T" eventType="touchUpInside" id="fF5-aT-Fuu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A5C-oX-ilV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="KmT-v7-HQs" firstAttribute="leading" secondItem="hVH-Ch-nST" secondAttribute="trailing" constant="10" id="1Zg-8n-A1h"/>
                             <constraint firstItem="vsR-qn-X1l" firstAttribute="top" secondItem="A5C-oX-ilV" secondAttribute="top" constant="20" id="2fa-St-dmQ"/>
                             <constraint firstItem="A5C-oX-ilV" firstAttribute="bottom" secondItem="JPl-kB-78r" secondAttribute="bottom" constant="20" id="9cJ-fO-6jy"/>
-                            <constraint firstItem="JPl-kB-78r" firstAttribute="top" secondItem="hVH-Ch-nST" secondAttribute="bottom" constant="20" id="A9S-cG-aW5"/>
+                            <constraint firstItem="JPl-kB-78r" firstAttribute="top" secondItem="hVH-Ch-nST" secondAttribute="bottom" constant="50" id="A9S-cG-aW5"/>
                             <constraint firstItem="hVH-Ch-nST" firstAttribute="centerX" secondItem="A5C-oX-ilV" secondAttribute="centerX" id="Al3-jZ-vhm"/>
                             <constraint firstItem="JPl-kB-78r" firstAttribute="leading" secondItem="A5C-oX-ilV" secondAttribute="leading" constant="20" id="HKh-7F-oo5"/>
                             <constraint firstItem="hVH-Ch-nST" firstAttribute="leading" secondItem="vsR-qn-X1l" secondAttribute="trailing" constant="10" id="OEj-qb-44P"/>
                             <constraint firstItem="vsR-qn-X1l" firstAttribute="leading" secondItem="A5C-oX-ilV" secondAttribute="leading" constant="20" id="fIX-hH-hiS"/>
                             <constraint firstItem="A5C-oX-ilV" firstAttribute="trailing" secondItem="JPl-kB-78r" secondAttribute="trailing" constant="20" id="fln-C0-w5T"/>
+                            <constraint firstItem="KmT-v7-HQs" firstAttribute="top" secondItem="A5C-oX-ilV" secondAttribute="top" constant="20" id="irn-xK-tmA"/>
                             <constraint firstItem="vsR-qn-X1l" firstAttribute="centerY" secondItem="hVH-Ch-nST" secondAttribute="centerY" id="tTy-Lo-dOf"/>
-                            <constraint firstItem="vsR-qn-X1l" firstAttribute="width" secondItem="i7O-xS-iNj" secondAttribute="width" multiplier="0.07" id="ylK-Fb-qhk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -712,7 +744,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc5-7D-dPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1431.8840579710145" y="-177.45535714285714"/>
+            <point key="canvasLocation" x="1430.4347826086957" y="-177.45535714285714"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="Mb9-ZR-NBB">
@@ -865,8 +897,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="jKu-Qu-WU7"/>
                     <connections>
-                        <outlet property="CalendarCollectionView" destination="ywG-AL-8Oj" id="Nq5-gQ-rC9"/>
-                        <outlet property="CalendarCollectionViewHeight" destination="Wsx-VR-TWl" id="XM6-fZ-VaI"/>
+                        <outlet property="calendarCollectionView" destination="ywG-AL-8Oj" id="Nq5-gQ-rC9"/>
+                        <outlet property="calendarCollectionViewHeight" destination="Wsx-VR-TWl" id="XM6-fZ-VaI"/>
                         <outlet property="calendarDateLabel" destination="YW2-rB-d2V" id="lVV-C7-Gl6"/>
                         <outlet property="nextMonthButton" destination="PoE-Oa-Q5O" id="N1A-Nb-JA6"/>
                         <outlet property="previousMonthButton" destination="uun-nX-47p" id="vty-93-e6u"/>
@@ -1238,6 +1270,7 @@
         <image name="graph" width="341" height="341"/>
         <image name="left" width="341" height="341"/>
         <image name="menu" width="341" height="341"/>
+        <image name="more" width="341" height="341"/>
         <image name="plusBox" width="341" height="341"/>
         <image name="right" width="341" height="341"/>
         <image name="search" width="341" height="341"/>

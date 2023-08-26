@@ -21,11 +21,11 @@ class DetailTableViewCell: UITableViewCell {
     }
     
     func setUI() {
-        contentLabel.font = .NanumSR(.regular, size: 14)
+        contentLabel.font = .appRegularFont(14)
         contentLabel.textColor = .black
-        dateLabel.font = .NanumSR(.light, size: 12)
+        dateLabel.font = .appRegularFont(12)
         dateLabel.textColor = .lightGray
-        alarmSetTimeLabel.font = .NanumSR(.regular, size: 12)
+        alarmSetTimeLabel.font = .appRegularFont(12)
         alarmSetTimeLabel.textColor = .lightGray
         alarmSetTimeLabel.isHidden = true
     }

@@ -22,6 +22,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func moreOptionBtnTapped(_ sender: Any) {
+        
+    }
+    
     override func viewDidLoad() {
         setUI()
         setTextField()
@@ -31,7 +35,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setUI() {
         searchTextField.layer.cornerRadius = 10
-        searchTextField.font = .NanumSR(.bold, size: 14)
+        searchTextField.font = .appBoldFont(14)
     }
     
     func setTextField() {

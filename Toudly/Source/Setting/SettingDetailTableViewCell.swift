@@ -14,7 +14,7 @@ class SettingDetailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.font = .NanumSR(.regular, size: 14)
+        titleLabel.font = .appRegularFont(14)
         settingSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     }
 }

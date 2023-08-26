@@ -19,12 +19,12 @@ class DetailViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewDidLoad() {
-        TitleLabel.font = .NanumSR(.bold, size: 16)
+        TitleLabel.font = .appBoldFont(16)
         settings.style.buttonBarBackgroundColor = .clear
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .black
         settings.style.selectedBarHeight = 1.5
-        settings.style.buttonBarItemFont = .NanumSR(.bold, size: 16)
+        settings.style.buttonBarItemFont = .appBoldFont(16)
         settings.style.buttonBarMinimumLineSpacing = 10
         settings.style.buttonBarLeftContentInset = 20
         settings.style.buttonBarRightContentInset = 20

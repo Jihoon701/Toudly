@@ -33,4 +33,21 @@ extension UIColor {
     class var lightGray182: UIColor {
         UIColor.fromRGB(red: 182, green: 182, blue: 182)
     }
+    
+    class var crimsonRed: UIColor {
+        UIColor.fromRGB(red: 157, green: 34, blue: 53)
+    }
+    
+    class var burnishedSlate: UIColor {
+        UIColor.fromRGB(red: 38, green: 45, blue: 35)
+    }
+    
+    //확정
+    class var colonyGreen: UIColor {
+        UIColor.fromRGB(red: 83, green: 113, blue: 82)
+    }
+    
+    class var galleryBlue: UIColor {
+        UIColor.fromRGB(red: 16, green: 57, blue: 82)
+    }
 }

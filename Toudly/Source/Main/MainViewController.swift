@@ -12,8 +12,8 @@ import IQKeyboardManagerSwift
 class MainViewController: UIViewController {
     
     @IBOutlet weak var calendarDateLabel: UILabel!
-    @IBOutlet weak var CalendarCollectionView: UICollectionView!
-    @IBOutlet weak var CalendarCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var calendarCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var previousMonthButton: UIButton!
     @IBOutlet weak var nextMonthButton: UIButton!
     @IBOutlet weak var todoListTableView: UITableView!
@@ -36,8 +36,8 @@ class MainViewController: UIViewController {
     var newSelectedDate = ""
     
     func initialSetup() {
-        CalendarCollectionView.delegate = self
-        CalendarCollectionView.dataSource = self
+        calendarCollectionView.delegate = self
+        calendarCollectionView.dataSource = self
         
         todoListTableView.delegate = self
         todoListTableView.dataSource = self
@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
         todoListTableView.dragDelegate = self
         todoListTableView.dropDelegate = self
         
-        CalendarCollectionView.register(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCollectionViewCell")
+        calendarCollectionView.register(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCollectionViewCell")
         todoListTableView.register( UINib(nibName: "TodoListTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoListTableViewCell")
         todoListTableView.register(UINib(nibName: "AddTodoListTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTodoListTableViewCell")
     }
@@ -55,33 +55,40 @@ class MainViewController: UIViewController {
         return [.portrait]
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
         todoListTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         list = realm.objects(TodoList.self).filter("date == %@", selectedDate).sorted(byKeyPath: "order", ascending: true)
-        print(holidayCalendar.holidayInfoArray)
         addTodoListCellExist = false
-        CalendarCollectionView.reloadData()
+        calendarCollectionView.reloadData()
+        setUI()
         
+        for indexPath in todoListTableView.indexPathsForVisibleRows ?? [] {
+            if let cell = todoListTableView.cellForRow(at: indexPath) as? TodoListTableViewCell {
+                cell.setUI()
+            }
+        }
     }
     
     override func viewDidLoad() {
         self.initialSetup()
         todoCalendar.initCalendar()
-        todoListTableView.layer.cornerRadius = 10
         addTodoListCellExist = false
-        calendarDateLabel.setupTitleLabel(text: todoCalendar.CalendarTitle())
-        nextMonthButton.isHidden = Constant.isWeekType!
-        previousMonthButton.isHidden = Constant.isWeekType!
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Constant.reloadBookmark, object: nil)
         newSelectedDate = todoDate.changeDayStatus(checkCurrentDayMonth: todoCalendar.checkCurrentDayInMonth())
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         realmNotification()
-        
+        setUI()
         super.viewDidLoad()
+    }
+    
+    func setUI() {
+        todoListTableView.layer.cornerRadius = 10
+        calendarDateLabel.setupTitleLabel(text: todoCalendar.CalendarTitle())
+        nextMonthButton.isHidden = Constant.isWeekType!
+        previousMonthButton.isHidden = Constant.isWeekType!
     }
     
     @objc func reload() {
@@ -91,7 +98,7 @@ class MainViewController: UIViewController {
     func realmNotification() {
         realmNotificationToken = realm.observe { [self] (notification, realm) in
             todoListTableView.reloadData()
-            CalendarCollectionView.reloadData()
+            calendarCollectionView.reloadData()
         }
     }
     
@@ -150,8 +157,8 @@ class MainViewController: UIViewController {
     
     func rearrangeCalendar() {
         list = realm.objects(TodoList.self).filter("date == %@", selectedDate).sorted(byKeyPath: "order", ascending: true)
-        CalendarCollectionView.reloadData()
-        CalendarCollectionViewHeight.constant = CalendarCollectionView.collectionViewLayout.collectionViewContentSize.height
+        calendarCollectionView.reloadData()
+        calendarCollectionViewHeight.constant = calendarCollectionView.collectionViewLayout.collectionViewContentSize.height
         todoListTableView.reloadData()
         view.setNeedsLayout()
     }
@@ -174,7 +181,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        CalendarCollectionViewHeight.constant = CalendarCollectionView.collectionViewLayout.collectionViewContentSize.height
+        calendarCollectionViewHeight.constant = calendarCollectionView.collectionViewLayout.collectionViewContentSize.height
         view.setNeedsLayout()
     }
 }
@@ -226,11 +233,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func selectCalendarCell(indexPath: IndexPath, calendarType: Bool) {
         createSelectedDate(indexPath: indexPath, calendarType: calendarType)
-        CalendarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
+        calendarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = CalendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell", for: indexPath) as! CalendarCollectionViewCell
+        let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell", for: indexPath) as! CalendarCollectionViewCell
         var daysInAccordanceWithType = ""
         
         if indexPath.section == 0 {
@@ -268,7 +275,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = CalendarCollectionView.frame.size.width / 7 - 5
+        let width = calendarCollectionView.frame.size.width / 7 - 5
         let height = width
         return CGSize(width: width, height: height)
     }

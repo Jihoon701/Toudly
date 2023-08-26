@@ -19,8 +19,8 @@ class SearchTableViewCell: UITableViewCell {
     
     func setUI() {
         self.selectionStyle = .none
-        contentLabel.font = .NanumSR(.regular, size: 14)
-        dateLabel.font = .NanumSR(.light, size: 12)
+        contentLabel.font = .appRegularFont(14)
+        dateLabel.font = .appRegularFont(12)
         dateLabel.textColor = .lightGray
     }
     
@@ -56,7 +56,7 @@ class SearchTableViewCell: UITableViewCell {
         }
         
         rangeArr.forEach { (range) in
-            attributedString.addAttributes([.font: UIFont.NanumSR(.extraBold, size: 14), .foregroundColor: UIColor.burgundy], range: range)
+            attributedString.addAttributes([.font: UIFont.appExtraBoldFont(14), .foregroundColor: UIColor.burgundy], range: range)
         }
         
         return attributedString

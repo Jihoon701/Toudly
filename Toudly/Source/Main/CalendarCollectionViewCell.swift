@@ -26,12 +26,13 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet{
             if isSelected {
-                DateLabel.font = .NanumSR(.extraBold, size: 15)
+                DateLabel.font = .appExtraBoldFont(15)
                 DateLabel.textColor = UIColor.mainDarkGreen
+//                DateLabel.textColor = UIColor.burnishedSlate
             }
             else {
                 DateLabel.textColor = isHoliday ? UIColor.burgundy : UIColor.black
-                DateLabel.font = .NanumSR(.regular, size: 13)
+                DateLabel.font = .appRegularFont(13)
             }
         }
     }
@@ -45,13 +46,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     // haveTodayDate: 해당 달에 오늘 날짜가 포함되어 있는지 확인하는 변수
-    // haveHolidayDate: 해당 달에 공휴일이 포함되어 있는지 확인하는 변수
     func initDayCell(currentDay: String, haveTodayDate: Bool, date: String, haveHolidayDate: Bool) {
         DateLabel.text = currentDay
         drawCircleOnTodayDate(haveTodayDate: haveTodayDate, checkingDate: currentDay)
-//        changeTextColorOnHolidayDate(haveHolidayDate: haveHolidayDate, checkingDate: currentDay)
         checkListExistingDate(date: "\(date)/\(currentDay)")
-//        print("^^   ", haveHolidayDate)
     }
     
     func checkListExistingDate(date: String) {
@@ -72,19 +70,6 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
         else {
             CircleImageView.isHidden = true
-        }
-    }
-    
-    func changeTextColorOnHolidayDate(haveHolidayDate: Bool, checkingDate: String) {
-        print("공휴일  ", changeTextColorOnHolidayDate, checkingDate)
-        if haveHolidayDate && (holidayCalendar.holidayInfoArray.firstIndex(where: {String($0.day) == checkingDate}) != nil) {
-            print("공휴일 존재")
-            DateLabel.textColor = UIColor.burgundy
-            self.isHoliday = true
-        }
-        else {
-            DateLabel.textColor = UIColor.black
-            self.isHoliday = false
         }
     }
 }

@@ -49,7 +49,7 @@ extension UIViewController {
         alertSuperview.isHidden = true
         
         let alertLabel = UILabel()
-        alertLabel.font = .NanumSR(.regular, size: 14)
+        alertLabel.font = .appRegularFont(14)
         alertLabel.textColor = .white
         
         self.view.addSubview(alertSuperview)

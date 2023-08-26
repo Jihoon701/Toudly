@@ -25,7 +25,7 @@ class WalkThroughViewController: UIViewController {
         }
         
         toMainVCButton.setTitle("Let's Toudly".localized(), for: .normal)
-        toMainVCButton.titleLabel?.font = .NanumSR(.extraBold, size: 14)
+        toMainVCButton.titleLabel?.font = .appExtraBoldFont(14)
         toMainVCButton.layer.cornerRadius = 15
     }
     

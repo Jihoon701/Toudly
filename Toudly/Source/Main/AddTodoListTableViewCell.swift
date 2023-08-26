@@ -33,7 +33,7 @@ class AddTodoListTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.order = order
         self.id = id
         AddTodoListTextField.text = ""
-        AddTodoListTextField.font = .NanumSR(.regular, size: 13)
+        AddTodoListTextField.font = .appRegularFont(13)
         AddTodoListTextField.delegate = self
         AddTodoListTextField.returnKeyType = .done
         

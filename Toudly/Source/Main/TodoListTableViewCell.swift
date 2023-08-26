@@ -31,8 +31,8 @@ class TodoListTableViewCell: UITableViewCell {
         let checkboxTapGesture = UITapGestureRecognizer(target: self, action: #selector(PressCheckbox))
         checkboxImage.addGestureRecognizer(checkboxTapGesture)
         checkboxImage.isUserInteractionEnabled = true
-        todoListLabel.font = .NanumSR(.regular, size: 13)
-        alarmTimeLabel.font = .NanumSR(.regular, size: 12)
+        todoListLabel.font = .appBoldFont(13)
+        alarmTimeLabel.font = .appBoldFont(12)
         alarmTimeLabel.textColor = .lightGray
     }
     
@@ -84,17 +84,29 @@ class TodoListTableViewCell: UITableViewCell {
     
     func strikeThroughTodoList() {
         checkboxImage.image = UIImage(named: "checkBox")
-        let strikethroughlineAttribute = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.thick.rawValue]
+        let strikethroughlineAttribute: [NSAttributedString.Key: Any] = [
+            .strikethroughStyle: NSUnderlineStyle.thick.rawValue,
+            .paragraphStyle: {
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = 4
+                return paragraphStyle
+            }()
+        ]
         let strikethroughlineAttributedString = NSAttributedString(string: todoListContent, attributes: strikethroughlineAttribute)
+        
         todoListLabel.attributedText = strikethroughlineAttributedString
         bookmarkImage.image = UIImage(named: "bookmark_gray")
-        
     }
     
     func originalTodoList() {
         checkboxImage.image = UIImage(named: "emptyBox")
         let attributeString = NSMutableAttributedString(string: todoListContent)
         attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle, range: NSMakeRange(0, attributeString.length))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attributeString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributeString.length))
+        
         todoListLabel.attributedText = attributeString
         bookmarkImage.image = UIImage.coloredBookmarkImage(bookmarkImage.image!)()
     }

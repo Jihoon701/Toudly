@@ -68,7 +68,7 @@ class EditTodoListViewController: UIViewController, UITextFieldDelegate {
         bookmarkSwitch.setOn(todoBookmark, animated: false)
         
         todoListContentTextField.text = todoContent
-        todoListContentTextField.font = .NanumSR(.regular, size: 14)
+        todoListContentTextField.font = .appRegularFont(14)
         
         backButton.setupButtonTitleLabel(text: "Close".localized())
         saveButton.setupButtonTitleLabel(text: "Save".localized())
@@ -76,7 +76,7 @@ class EditTodoListViewController: UIViewController, UITextFieldDelegate {
         bookmarkLabel.setupLabel(text: "Bookmark".localized())
         alarmLabel.setupLabel(text: "Notification".localized())
 
-        alarmTimeSetLabel.font = .NanumSR(.bold, size: 12)
+        alarmTimeSetLabel.font = .appBoldFont(12)
         alarmTimeSetLabel.textColor = UIColor.darkGray
         setInitialAlarmTime()
         alarmTimeSetLabel.text = "\(timeSetHour):\(timeSetMinute)"
@@ -394,7 +394,7 @@ extension EditTodoListViewController: UNUserNotificationCenterDelegate, UIPicker
         let viewWidth = alarmPickerView.frame.size.width * 1/3
         let view = UIView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewWidth * 2/3))
         let alarmLabel = UILabel(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewWidth * 2/3))
-        alarmLabel.font = .NanumSR(.regular, size: 14)
+        alarmLabel.font = .appRegularFont(14)
         alarmLabel.textColor = .black
         alarmLabel.textAlignment = .center
         

@@ -12,7 +12,7 @@ extension UILabel {
     
     func setupNoticeLabel(labelText: String) {
         self.numberOfLines = 0
-        self.font = .NanumSR(.regular, size: 15)
+        self.font = .appRegularFont(15)
         self.textColor = .lightGray
         let attrString = NSMutableAttributedString(string: labelText)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -23,17 +23,12 @@ extension UILabel {
     }
     
     func setupTitleLabel(text: String) {
-        self.font = .NanumSR(.bold, size: 16)
+        self.font = .appBoldFont(16)
         self.text = text
     }
     
     func setupLabel(text: String) {
-        self.font = .NanumSR(.regular, size: 14) 
-        self.text = text
-    }
- 
-    func setupTextLabel(text: String) {
-        self.font = .NanumSR(.light, size: 10)
+        self.font = .appRegularFont(14)
         self.text = text
     }
 }

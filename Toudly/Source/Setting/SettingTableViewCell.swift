@@ -33,7 +33,7 @@ class SettingTableViewCell: UITableViewCell {
         if row == 6 {
             settingDetailLabel.isHidden = false
             settingDetailLabel.text = appVersion
-            settingDetailLabel.font = .NanumSR(.extraBold, size: 12)
+            settingDetailLabel.font = .appExtraBoldFont(12)
             settingDetailLabel.textColor = #colorLiteral(red: 0.3803921569, green: 0.3803921569, blue: 0.3803921569, alpha: 1)
         }
     } 

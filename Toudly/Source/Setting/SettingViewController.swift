@@ -17,6 +17,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.popViewController(animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        settingTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         titleLabel.setupTitleLabel(text: "Settings".localized())
         settingTableView.delegate = self
